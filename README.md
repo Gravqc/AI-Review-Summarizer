@@ -3,7 +3,9 @@
 ## 📖 Introduction
 Review Summarizer AI is a web application designed to efficiently scrape and summarize user reviews from Google Maps locations. It uses Python, FastAPI, and modern web technologies to provide real-time, insightful summaries, aiding users in making informed decisions based on collective reviews.
 
-
+## 🎥 Video Demonstration
+Check out the video demonstration [here](https://drive.google.com/file/d/12faxIP0d0gIP8yWJBm_i1NMw3xRbnQyQ/view?usp=sharing) to see the Review Summarizer AI in action! 
+ 
 ## 🛠️ Installation
 To set up the project, follow these steps:
 
@@ -190,56 +192,5 @@ models = [m for m in palm.list_models() if "generateText" in m.supported_generat
 model = models[0].name
 ```
 
-### INDEX.HTML: 
-The main HTML file for the web application's user interface.
-### STYLE.CSS: 
-Contains all styling for the web application to ensure a consistent and responsive user interface.
-### SCRIPT.JS: 
-Includes JavaScript code for handling user interactions, making requests to the server, and updating the UI with response data.
-#### Event Listener Attachment
-```
-document.getElementById('urlForm').addEventListener('submit', async function(e) {
-    //...
-});
-```
-- Event Listener: Attaches an event listener to the form identified by 'urlForm'. The listener triggers on the 'submit' event, which occurs when the form is submitted.
-- Async Function: The function handling the event is asynchronous (async), indicating that it will perform asynchronous operations inside, specifically network requests.
-#### Prevent Default Form Behavior
-````
-e.preventDefault();
-````
-Prevents the form's default submission behavior, which typically causes a page reload. This allows the script to handle submission using AJAX for a smoother user experience.
-#### Retrieving URL from the Form
-```
-const url = document.getElementById('urlInput').value;
-```
-Gets the value entered in the input field (presumably where users enter the URL for the reviews they want summarized) identified by 'urlInput'.
-#### Sending Request to Server
-```
-const response = await fetch('/scrape-and-summarize/', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ url: url })  // Ensure this matches the expected format
-});
-```
-- Fetch API: Uses the fetch API to send a POST request to the /scrape-and-summarize/ endpoint.
-- Headers: Includes headers to indicate that the payload is JSON.
-- Body: The body of the request is a JSON string containing the URL fetched from the form.
-#### Handling Response
-```
-const result = await response.json();
-```
-Waits for the server to respond and converts the response to a JSON object, which is expected to contain the summary data.
-#### Displaying the Summary
-```
-document.getElementById('summaryOutput').innerText = result.summary || "No summary available";
-```
- Updates the text of the element identified by 'summaryOutput' with the summary returned from the server. If no summary is returned (perhaps due to an error or no reviews being found), it falls back to displaying "No summary available".
-
 ## 🌟 Project Impact
 In today's fast-paced world, individuals often rely on reviews to make informed decisions about where to dine, travel, or shop. However, the sheer volume of user-generated reviews can be overwhelming, making it challenging to sift through each one to gauge overall sentiment. The Review Summarizer AI steps in as an innovative solution, condensing and synthesizing vast numbers of reviews into concise, insightful summaries. This application empowers users by providing a quick, comprehensive understanding of public opinion, thus saving valuable time and aiding in making confident, informed decisions. Whether it's choosing the next culinary adventure, selecting a travel destination, or planning an outing, the Review Summarizer AI ensures that the best choices are just a summary away.
-
- ## 🎥 Video Demonstration
- Check out the video demonstration [here](https://drive.google.com/file/d/12faxIP0d0gIP8yWJBm_i1NMw3xRbnQyQ/view?usp=sharing) to see the Review Summarizer AI in action! 
